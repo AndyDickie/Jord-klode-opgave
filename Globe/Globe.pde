@@ -24,7 +24,9 @@ void setup() {
 
   //satelitterne oprettes
   satellites.add(new Satellite("25544", color(255, 204, 0)));
-  satellites.add(new Satellite("23415", color(100, 204, 200)));
+  satellites.add(new Satellite("23432", color(100, 204, 200)));
+  satellites.add(new Satellite("23345", color(100, 204, 65)));
+  satellites.add(new Satellite("35145", color(255, 0, 250)));
   
   //starttidspunktet oprettes som en dato
   startTime = new Date (startUnixTime * 1000);
@@ -47,9 +49,9 @@ void draw() {
     s.update();
     rotateY(-rotationY);
     
-    textSize(60);
+    textSize(80);
     fill(color(s.c));
-    text(s.name , -1500, -1000 - (i * 50));
+    text(s.name , -1500, -1000 + (i * 65));
     fill(255);
     
   }
