@@ -20,6 +20,9 @@ class Satellite {
     float sat1Lat = j.getJSONArray("positions").getJSONObject(0).getFloat("satlatitude");
     float sat2Lon = j.getJSONArray("positions").getJSONObject(1).getFloat("satlongitude");
     float sat2Lat = j.getJSONArray("positions").getJSONObject(1).getFloat("satlatitude");
+    
+    //timestamp hentes fra JSON
+    startUnixTime = j.getJSONArray("positions").getJSONObject(1).getLong("timestamp");
 
     //Højden af satelitten hentes og omregnes til km over overfladen (jordens radius er 6371 km)
     float h = ((6371 + j.getJSONArray("positions").getJSONObject(1).getFloat("sataltitude"))/6371) * r;
@@ -29,7 +32,8 @@ class Satellite {
     float phi1 = radians(sat1Lon) + PI;
     float theta2 = radians(sat2Lat);
     float phi2 = radians(sat2Lon) + PI;
-    //h;
+    
+    //De kartesiske koordinaer kan nu beregnes. Dette laves til to PVectorer
     position1 = new PVector(h * cos(theta1) * cos(phi1), -h * sin(theta1), -h * cos(theta1) * sin(phi1));
     position2 = new PVector(h * cos(theta2) * cos(phi2), -h * sin(theta2), -h * cos(theta2) * sin(phi2));
     
