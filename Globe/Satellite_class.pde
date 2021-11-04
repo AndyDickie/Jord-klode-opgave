@@ -1,5 +1,5 @@
 class Satellite {
-  String NoradID;
+  String NoradID, name;
   color c;
   float speed;
   
@@ -23,6 +23,9 @@ class Satellite {
     
     //timestamp hentes fra JSON
     startUnixTime = j.getJSONArray("positions").getJSONObject(1).getLong("timestamp");
+    
+    //Navnet af satellitten hentes
+    name = j.getJSONObject("info").getString("satname");
 
     //Højden af satelitten hentes og omregnes til km over overfladen (jordens radius er 6371 km)
     float h = ((6371 + j.getJSONArray("positions").getJSONObject(1).getFloat("sataltitude"))/6371) * r;

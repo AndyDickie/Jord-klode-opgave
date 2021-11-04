@@ -40,24 +40,31 @@ void draw() {
   shape(globe);
   rotateY(-rotationY);
 
-  //tegn satelitterne og 
+  //tegn satelitterne 
   for (int i = 0; i <= satellites.size()-1; i++) {
     Satellite s = satellites.get(i);
     rotateY(rotationY);
     s.update();
     rotateY(-rotationY);
+    
+    textSize(60);
+    fill(color(s.c));
+    text(s.name , -1500, -1000 - (i * 50));
+    fill(255);
+    
   }
   
   //Textfelt med starttidspunktet;
   textSize(100);
   text("Start Date: " + startTime.toString(), -1500, -1500);
   
-  //Textfelt med tidspunktet i simulationen
+  //Textfelt for det nuværende tidspunkt i simulationen
   currentTime = new Date(time * 1000);
   textSize(100);
-  text("Start Date: " + currentTime.toString(), -1500, -1300);
-  time += 5;
+  text("Current Date: " + currentTime.toString(), -1500, -1300);
   
+  //der lægges 5 sekunder til tiden
+  time += 5;
 }
 
 //funktionen roterer satelitterne og kloden om y aksen
