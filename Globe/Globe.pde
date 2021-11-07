@@ -63,7 +63,7 @@ void draw() {
   //Textfelt for det nuværende tidspunkt i simulationen
   currentTime = new Date(time * 1000);
   textSize(100);
-  text("Current Date: " + currentTime.toString(), -1500, -1300);
+  text("Simulated Date: " + currentTime.toString(), -1500, -1300);
   
   //der lægges 5 sekunder til tiden
   time += 5;
